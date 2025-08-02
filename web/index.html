@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blocks Puzzle Web</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        async function main() {
+            let pyodide = await loadPyodide({
+                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.21.3/full/"
+            });
+            
+            await pyodide.loadPackage("micropip");
+            await pyodide.runPythonAsync(`
+                import micropip
+                await micropip.install('fonts')
+                import game
+                game.run()
+            `);
+        }
+        main();
+    </script>
+</body>
+</html>
