@@ -498,3 +498,12 @@ class Game:
             for i, block in enumerate(self.ui.current_blockset.selected_blocks):
                 if i < len(new_positions):
                     block.pos = new_positions[i]
+
+# 修改关卡加载方式
+from levels import levels_data  # 从内嵌字符串加载
+
+def load_levels():
+    return level_parser.parse_levels(levels_data)
+
+# 修改字体加载路径为相对路径
+FONT_PATH = 'fonts/Alibaba-PuHuiTi-Regular.ttf'
